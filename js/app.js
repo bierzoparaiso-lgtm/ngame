@@ -254,7 +254,7 @@ async function loadHistory() {
 document.addEventListener('DOMContentLoaded', () => {
     if (window.IDKit) {
         window.IDKit.init({
-            app_id: "app_XXXXXXXXXXXXXXXX",
+            app_id: "3164421492350725576",
             action: "signin",
             onSuccess: (result) => handleWorldIDProof(result)
         });
