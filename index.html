@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ñgame</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Pantalla de Bienvenida -->
+        <div id="login-screen" class="login-overlay">
+            <div class="login-box">
+                <h1 data-i18n="welcome_title">Welcome to Ñgame</h1>
+                <div class="login-actions">
+                    <button id="btn-worldid" class="btn btn-primary" data-i18n="sign_in_worldid">Sign in with World ID</button>
+                    <button id="btn-wallet" class="btn btn-primary" data-i18n="wallet_connect" style="display: none;">Connect wallet</button>
+                    <p id="auth-status" class="auth-status-msg" data-i18n="verifying" style="display: none;">Verifying...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra Superior -->
+        <header class="app-header">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+            <select id="lang-select" aria-label="Select language"></select>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-content">
+            <!-- Perfil -->
+            <section id="tab-profile" class="tab-view active">
+                <div class="profile-card">
+                    <div class="avatar-placeholder">👤</div>
+                    <h2 data-i18n="profile_name"></h2>
+                    <div class="auth-info">
+                        <p><span data-i18n="player_id">Player ID</span>: <span id="player-id-value">--</span></p>
+                        <p><span data-i18n="wallet_address_label">Wallet</span>: <span id="wallet-address-value">--</span></p>
+                    </div>
+                </div>
+                <div class="balance-container">
+                    <div class="balance-item">
+                        <span class="balance-label" data-i18n="balance_total"></span>
+                        <span class="balance-value" id="balance-total" data-i18n="balance_placeholder">-- Ñ</span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="balance-label" data-i18n="balance_available"></span>
+                        <span class="balance-value" id="balance-available" data-i18n="balance_placeholder">-- Ñ</span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="balance-label" data-i18n="balance_locked"></span>
+                        <span class="balance-value" id="balance-blocked" data-i18n="balance_placeholder">-- Ñ</span>
+                    </div>
+                </div>
+                <button id="btn-history" class="btn btn-secondary" data-i18n="btn_history">History</button>
+                <button id="btn-logout" class="btn btn-secondary btn-danger" data-i18n="sign_out" style="margin-top: 12px;">Sign out</button>
+                <div id="history-panel" style="display: none;">
+                    <h3 data-i18n="btn_history">History</h3>
+                    <div id="history-list"></div>
+                </div>
+            </section>
+
+            <!-- Juegos -->
+            <section id="tab-games" class="tab-view">
+                <h2 class="section-title" data-i18n="games_title"></h2>
+                <div id="games-grid" class="games-grid"></div>
+                <div class="ad-banner" style="margin-top: 20px;">
+                    <p data-i18n="ad_banner_text">Sponsored: Earn 250 Ñ per visit</p>
+                    <button class="btn btn-primary btn-sm" data-i18n="btn_ad_visit" disabled>Visit Now</button>
+                </div>
+            </section>
+
+            <!-- Top -->
+            <section id="tab-top" class="tab-view">
+                <h2 class="section-title" data-i18n="top_title"></h2>
+                <div class="subtabs">
+                    <button class="subtab-btn active" data-top="winners" data-i18n="subtab_winners"></button>
+                    <button class="subtab-btn" data-top="risky" data-i18n="subtab_risky"></button>
+                    <button class="subtab-btn" data-top="streaks" data-i18n="subtab_streaks"></button>
+                </div>
+                <div id="leaderboard-table" class="table-container">
+                    <table>
+                        <thead><tr><th data-i18n="table_rank"></th><th data-i18n="table_player"></th><th data-i18n="table_currency"></th></tr></thead>
+                        <tbody id="leaderboard-body">
+                            <tr><td colspan="3" class="table-empty-cell" data-i18n="table_empty">No data yet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Pantalla de juego -->
+            <div id="game-screen" style="display: none;">
+                <button id="btn-back-games" class="btn btn-secondary btn-back">&larr; <span data-i18n="btn_back">Back</span></button>
+                <div id="game-content"></div>
+            </div>
+        </main>
+
+        <!-- Barra de Navegación -->
+        <nav class="nav-bar">
+            <button class="nav-item active" data-tab="profile"><span class="nav-icon">👤</span><span class="nav-text" data-i18n="nav_profile"></span></button>
+            <button class="nav-item" data-tab="games"><span class="nav-icon">🎮</span><span class="nav-text" data-i18n="nav_games"></span></button>
+            <button class="nav-item" data-tab="top"><span class="nav-icon">🏆</span><span class="nav-text" data-i18n="nav_top"></span></button>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/@worldcoin/idkit@latest/dist/idkit.js"></script>
+    <script src="https://unpkg.com/@worldcoin/minikit@latest/dist/minikit.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
