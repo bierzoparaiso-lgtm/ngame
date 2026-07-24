@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+  <h1>Diagnóstico de scripts</h1>
+  <div id="log"></div>
+  <script>
+    const log = document.getElementById('log');
+    function testScript(src) {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = () => { log.innerHTML += `<p>✅ ${src} cargado</p>`; resolve(true); };
+        script.onerror = () => { log.innerHTML += `<p>❌ ERROR en ${src}</p>`; resolve(false); };
+        document.head.appendChild(script);
+      });
+    }
+    (async () => {
+      await testScript('js/i18n.js');
+      await testScript('js/theme.js');
+      await testScript('js/games.js');
+      await testScript('js/app.js');
+      log.innerHTML += '<p><b>Prueba finalizada.</b> Si ves ✅ en los 4 archivos, todo funciona. Si ves ❌ en alguno, ese es el culpable.</p>';
+    })();
+  </script>
+</body>
+</html>
