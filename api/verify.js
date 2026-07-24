@@ -4,7 +4,7 @@ export default async function handler(req, res) {
         const { proof } = req.body;
         if (!proof) return res.status(400).json({ success: false, message: 'Missing proof parameter' });
         const worldcoinPayload = {
-            app_id: "app_XXXXXXXXXXXXXXXX",
+            app_id: "app_id: "3164421492350725576",
             action: "signin",
             signal: "0",
             proof: proof
