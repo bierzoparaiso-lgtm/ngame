@@ -272,6 +272,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.IDKit) { window.IDKit.open(); }
         else { document.getElementById('auth-status').textContent = getText('wallet_error', localStorage.getItem('lang') || 'ES'); }
     });
+    document.getElementById('btn-demo').addEventListener('click', () => {
+    sessionStorage.setItem('nullifier_hash', '0xdemodemo1234567890abcdef');
+    sessionStorage.setItem('wallet_address', '0xDemoWallet0000000000000000000000000000000000');
+    initAuth();
+});
     document.getElementById('btn-wallet').addEventListener('click', handleWalletConnect);
     document.getElementById('btn-logout').addEventListener('click', logout);
     document.getElementById('btn-history').addEventListener('click', loadHistory);
